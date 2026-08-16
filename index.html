@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeneX - Inteligência Artificial que trabalha por você</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#0a0a0a;color:#fff;overflow-x:hidden}
+.bg{position:fixed;inset:0;background:radial-gradient(600px at 20% 10%,rgba(99,102,241,0.15),transparent),radial-gradient(800px at 80% 90%,rgba(168,85,247,0.12),transparent)}
+nav{position:relative;display:flex;justify-content:space-between;align-items:center;padding:24px 5%;max-width:1200px;margin:0 auto}
+.logo{font-weight:800;font-size:22px;letter-spacing:-0.5px}
+.logo span{color:#6366f1}
+.badge{font-size:12px;border:1px solid #222;background:#111;padding:6px 12px;border-radius:999px;color:#888}
+.hero{position:relative;max-width:1200px;margin:0 auto;padding:80px 5% 40px;text-align:center}
+h1{font-size:56px;font-weight:800;line-height:0.95;letter-spacing:-2px;max-width:800px;margin:0 auto}
+h1 span{background:linear-gradient(90deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#888;font-size:18px;max-width:600px;margin:24px auto 36px;line-height:1.5}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 24px;border-radius:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s}
+.btn-primary{background:#fff;color:#000}
+.btn-primary:hover{background:#e5e5e5}
+.btn-sec{background:#1a1a1a;color:#fff;border:1px solid #2a2a2a}
+.btn-sec:hover{background:#222}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1200px;margin:80px auto;padding:0 5%;position:relative}
+.card{background:#111;border:1px solid #1e1e1e;border-radius:16px;padding:24px}
+.card h3{font-size:16px;margin-bottom:8px}
+.card p{color:#777;font-size:14px;line-height:1.5}
+.stack{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:60px 0;position:relative}
+.stack span{background:#111;border:1px solid #222;padding:6px 12px;border-radius:999px;font-size:12px;color:#666}
+footer{position:relative;text-align:center;padding:40px 5%;color:#444;font-size:13px;border-top:1px solid #111;margin-top:60px}
+footer a{color:#666;text-decoration:none}
+@media(max-width:600px){h1{font-size:36px}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+<div class="logo">Bene<span>X</span></div>
+<div class="badge">● API Live em api.benex.net.br</div>
+</nav>
+<div class="hero">
+<h1>Inteligência Artificial que <span>trabalha por você</span></h1>
+<p class="sub">Automatize atendimento, vendas e processos. Backend em Python + FastAPI já no ar em api.benex.net.br. Pronto pra escalar de graça.</p>
+<div class="ctas">
+<a class="btn btn-primary" href="https://app.benex.net.br">Acessar App →</a>
+<a class="btn btn-sec" href="https://api.benex.net.br/docs">Ver Documentação API</a>
+</div>
+</div>
+<div class="features">
+<div class="card"><h3>⚡ API em Python</h3><p>FastAPI rodando no Render com docs automático em /docs e /health monitorado.</p></div>
+<div class="card"><h3>🏢 Multi-cliente pronto</h3><p>Arquitetura pronta pra isolar dados por cliente quando ligar o banco Supabase.</p></div>
+<div class="card"><h3>💰 Infra grátis</h3><p>Começou com R$0 de servidor. Só pagou o domínio .net.br. Escala quando faturar.</p></div>
+</div>
+<div class="stack">
+<span>FastAPI</span><span>Python 3.11</span><span>Render</span><span>Vercel</span><span>Cloudflare</span><span>Supabase (próximo)</span>
+</div>
+<footer>
+BeneX © 2026 — <a href="https://api.benex.net.br/health">api status</a> · <a href="https://api.benex.net.br/docs">docs</a> · benex.net.br no ar
+</footer>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</html>
