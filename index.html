@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><style>
+<head>
+<style>
 @font-face {
   font-family: "Optimistic";
   font-style: normal;
@@ -25,35 +26,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BeneX - Inteligência Artificial que trabalha por você</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://googleapis.com">
+<link href="https://googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#0a0a0a;color:#fff;overflow-x:hidden}
-.bg{position:fixed;inset:0;background:radial-gradient(600px at 20% 10%,rgba(99,102,241,0.15),transparent),radial-gradient(800px at 80% 90%,rgba(168,85,247,0.12),transparent)}
-nav{position:relative;display:flex;justify-content:space-between;align-items:center;padding:24px 5%;max-width:1200px;margin:0 auto}
+.bg{position:fixed;inset:0;background:radial-gradient(600px at 20% 10%,rgba(99,102,241,0.15),transparent),radial-gradient(800px at 80% 90%,rgba(168,85,247,0.12),transparent);z-index: 0;}
+nav{position:relative;display:flex;justify-content:space-between;align-items:center;padding:24px 5%;max-width:1200px;margin:0 auto;z-index: 1;}
 .logo{font-weight:800;font-size:22px;letter-spacing:-0.5px}
 .logo span{color:#6366f1}
 .badge{font-size:12px;border:1px solid #222;background:#111;padding:6px 12px;border-radius:999px;color:#888}
-.hero{position:relative;max-width:1200px;margin:0 auto;padding:80px 5% 40px;text-align:center}
+.hero{position:relative;max-width:1200px;margin:0 auto;padding:80px 5% 40px;text-align:center;z-index: 1;}
 h1{font-size:56px;font-weight:800;line-height:0.95;letter-spacing:-2px;max-width:800px;margin:0 auto}
 h1 span{background:linear-gradient(90deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sub{color:#888;font-size:18px;max-width:600px;margin:24px auto 36px;line-height:1.5}
 .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{padding:14px 24px;border-radius:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s}
+.btn{padding:14px 24px;border-radius:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s;cursor:pointer;border:none;}
 .btn-primary{background:#fff;color:#000}
 .btn-primary:hover{background:#e5e5e5}
 .btn-sec{background:#1a1a1a;color:#fff;border:1px solid #2a2a2a}
 .btn-sec:hover{background:#222}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1200px;margin:80px auto;padding:0 5%;position:relative}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1200px;margin:80px auto;padding:0 5%;position:relative;z-index: 1;}
 .card{background:#111;border:1px solid #1e1e1e;border-radius:16px;padding:24px}
 .card h3{font-size:16px;margin-bottom:8px}
 .card p{color:#777;font-size:14px;line-height:1.5}
-.stack{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:60px 0;position:relative}
+.stack{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:60px 0;position:relative;z-index: 1;}
 .stack span{background:#111;border:1px solid #222;padding:6px 12px;border-radius:999px;font-size:12px;color:#666}
-footer{position:relative;text-align:center;padding:40px 5%;color:#444;font-size:13px;border-top:1px solid #111;margin-top:60px}
+footer{position:relative;text-align:center;padding:40px 5%;color:#444;font-size:13px;border-top:1px solid #111;margin-top:60px;z-index: 1;}
 footer a{color:#666;text-decoration:none}
 @media(max-width:600px){h1{font-size:36px}}
+
+/* --- INTERFACE DO CHAT DE IA --- */
+.chat-container {position:fixed;bottom:24px;right:24px;width:380px;height:500px;background:#111;border:1px solid #222;border-radius:16px;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,0.5);z-index:100;overflow:hidden}
+.chat-header {background:#16161a;padding:16px;border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center}
+.chat-header h4 {font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+.chat-header h4::before {content:"";display:inline-block;width:8px;height:8px;background:#10b981;border-radius:50%}
+.chat-messages {flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;font-size:14px;line-height:1.4}
+.msg {max-width:85%;padding:10px 14px;border-radius:12px}
+.msg-user {background:#6366f1;color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.msg-ia {background:#1a1a1a;border:1px solid #222;color:#eee;align-self:flex-start;border-bottom-left-radius:2px;white-space:pre-wrap}
+.chat-input-area {padding:12px;background:#16161a;border-top:1px solid #222;display:flex;gap:8px}
+.chat-input {flex:1;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:8px;padding:10px;color:#fff;font-size:14px;outline:none;resize:none;height:40px}
+.chat-input:focus {border-color:#6366f1}
+.btn-send {background:#fff;color:#000;border:none;padding:0 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s}
+.btn-send:hover {background:#e5e5e5}
+.btn-send:disabled {background:#333;color:#666;cursor:not-allowed}
+@media(max-width:450px){.chat-container{width:calc(100% - 32px);right:16px;bottom:16px;height:400px}}
 </style>
 </head>
 <body>
@@ -66,8 +84,8 @@ footer a{color:#666;text-decoration:none}
 <h1>Inteligência Artificial que <span>trabalha por você</span></h1>
 <p class="sub">Automatize atendimento, vendas e processos. Backend em Python + FastAPI já no ar em api.benex.net.br. Pronto pra escalar de graça.</p>
 <div class="ctas">
-<a class="btn btn-primary" href="https://app.benex.net.br">Acessar App →</a>
-<a class="btn btn-sec" href="https://api.benex.net.br/docs">Ver Documentação API</a>
+<a class="btn btn-primary" href="https://benex.net.br">Acessar App →</a>
+<a class="btn btn-sec" href="https://benex.net.br">Ver Documentação API</a>
 </div>
 </div>
 <div class="features">
@@ -78,8 +96,108 @@ footer a{color:#666;text-decoration:none}
 <div class="stack">
 <span>FastAPI</span><span>Python 3.11</span><span>Render</span><span>Vercel</span><span>Cloudflare</span><span>Supabase (próximo)</span>
 </div>
+
+<!-- COMPONENTE DE CHAT FLUTUANTE DA IA -->
+<div class="chat-container">
+    <div class="chat-header">
+        <h4>BeneX AI Studio</h4>
+        <span style="font-size:11px; color:#666;">Llamafile Qwen</span>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="msg msg-ia">Olá! Como posso ajudar na automação dos seus processos hoje?</div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Pergunte algo à IA..." onkeydown="if(event.key === 'Enter') enviarMensagemStream()">
+        <button id="btnEnviar" class="btn-send" onclick="enviarMensagemStream()">Enviar</button>
+    </div>
+</div>
+
 <footer>
-BeneX © 2026 — <a href="https://api.benex.net.br/health">api status</a> · <a href="https://api.benex.net.br/docs">docs</a> · benex.net.br no ar
+BeneX © 2026 — <a href="https://benex.net.br">api status</a> · <a href="https://benex.net.br">docs</a> · benex.net.br no ar
 </footer>
-<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+
+<!-- PROGRAMAÇÃO DO STREAM COMPATÍVEL COM LLAMAFILE -->
+<script>
+// Mantém a porta 11434 que rodamos no CMD
+const LLAMAFILE_API_URL = 'http://localhost:11434/v1/chat/completions'; 
+
+async function enviarMensagemStream() {
+    const input = document.getElementById('chatInput');
+    const container = document.getElementById('chatMessages');
+    const btn = document.getElementById('btnEnviar');
+    const texto = input.value.trim();
+
+    if (!texto) return;
+
+    input.value = '';
+    input.disabled = true;
+    btn.disabled = true;
+
+    const userDiv = document.createElement('div');
+    userDiv.className = 'msg msg-user';
+    userDiv.innerText = texto;
+    container.appendChild(userDiv);
+    container.scrollTop = container.scrollHeight;
+
+    const iaDiv = document.createElement('div');
+    iaDiv.className = 'msg msg-ia';
+    iaDiv.innerText = '...';
+    container.appendChild(iaDiv);
+    container.scrollTop = container.scrollHeight;
+
+    try {
+        const response = await fetch(LLAMAFILE_API_URL, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer no-key-required'
+            },
+            body: JSON.stringify({
+                model: 'local-model',
+                messages: [{ role: 'user', content: texto }],
+                stream: true 
+            })
+        });
+
+        if (!response.ok) throw new Error("Não foi possível conectar ao Llamafile.");
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        iaDiv.innerText = ''; 
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunkText = decoder.decode(value, { stream: true });
+            const linhas = chunkText.split('\n');
+            
+            for (const linha of linhas) {
+                if (linha.startsWith('data: ')) {
+                    const jsonStr = linha.replace('data: ', '').trim();
+                    if (jsonStr === '[DONE]') break;
+                    
+                    try {
+                        const json = JSON.parse(jsonStr);
+                        const conteudo = json.choices[0].delta.content;
+                        if (conteudo) {
+                            iaDiv.innerText += conteudo;
+                            container.scrollTop = container.scrollHeight;
+                        }
+                    } catch (e) {}
+                }
+            }
+        }
+
+    } catch (erro) {
+        console.error(erro);
+        iaDiv.innerText = "Erro ao conectar com a IA. Certifique-se de que o Llamafile está ativo no terminal.";
+    } finally {
+        input.disabled = false;
+        btn.disabled = false;
+        input.focus();
+    }
+}
+</script>
+</body>
 </html>
