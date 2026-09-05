@@ -1,203 +1,547 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<style>
-@font-face {
-  font-family: "Optimistic";
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Optimistic Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
-}
-:where(html) {
-  font-family: "Optimistic", system-ui, sans-serif;
-}
-:where(code, pre, kbd, samp) {
-  font-family: "Optimistic Mono", ui-monospace, monospace;
-}
-</style>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeneX - Inteligência Artificial que trabalha por você</title>
-<link rel="preconnect" href="https://googleapis.com">
-<link href="https://googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#0a0a0a;color:#fff;overflow-x:hidden}
-.bg{position:fixed;inset:0;background:radial-gradient(600px at 20% 10%,rgba(99,102,241,0.15),transparent),radial-gradient(800px at 80% 90%,rgba(168,85,247,0.12),transparent);z-index: 0;}
-nav{position:relative;display:flex;justify-content:space-between;align-items:center;padding:24px 5%;max-width:1200px;margin:0 auto;z-index: 1;}
-.logo{font-weight:800;font-size:22px;letter-spacing:-0.5px}
-.logo span{color:#6366f1}
-.badge{font-size:12px;border:1px solid #222;background:#111;padding:6px 12px;border-radius:999px;color:#888}
-.hero{position:relative;max-width:1200px;margin:0 auto;padding:80px 5% 40px;text-align:center;z-index: 1;}
-h1{font-size:56px;font-weight:800;line-height:0.95;letter-spacing:-2px;max-width:800px;margin:0 auto}
-h1 span{background:linear-gradient(90deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{color:#888;font-size:18px;max-width:600px;margin:24px auto 36px;line-height:1.5}
-.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{padding:14px 24px;border-radius:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s;cursor:pointer;border:none;}
-.btn-primary{background:#fff;color:#000}
-.btn-primary:hover{background:#e5e5e5}
-.btn-sec{background:#1a1a1a;color:#fff;border:1px solid #2a2a2a}
-.btn-sec:hover{background:#222}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1200px;margin:80px auto;padding:0 5%;position:relative;z-index: 1;}
-.card{background:#111;border:1px solid #1e1e1e;border-radius:16px;padding:24px}
-.card h3{font-size:16px;margin-bottom:8px}
-.card p{color:#777;font-size:14px;line-height:1.5}
-.stack{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:60px 0;position:relative;z-index: 1;}
-.stack span{background:#111;border:1px solid #222;padding:6px 12px;border-radius:999px;font-size:12px;color:#666}
-footer{position:relative;text-align:center;padding:40px 5%;color:#444;font-size:13px;border-top:1px solid #111;margin-top:60px;z-index: 1;}
-footer a{color:#666;text-decoration:none}
-@media(max-width:600px){h1{font-size:36px}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeneX - Inteligência Artificial que trabalha por você</title>
 
-/* --- INTERFACE DO CHAT DE IA --- */
-.chat-container {position:fixed;bottom:24px;right:24px;width:380px;height:500px;background:#111;border:1px solid #222;border-radius:16px;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,0.5);z-index:100;overflow:hidden}
-.chat-header {background:#16161a;padding:16px;border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center}
-.chat-header h4 {font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
-.chat-header h4::before {content:"";display:inline-block;width:8px;height:8px;background:#10b981;border-radius:50%}
-.chat-messages {flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;font-size:14px;line-height:1.4}
-.msg {max-width:85%;padding:10px 14px;border-radius:12px}
-.msg-user {background:#6366f1;color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
-.msg-ia {background:#1a1a1a;border:1px solid #222;color:#eee;align-self:flex-start;border-bottom-left-radius:2px;white-space:pre-wrap}
-.chat-input-area {padding:12px;background:#16161a;border-top:1px solid #222;display:flex;gap:8px}
-.chat-input {flex:1;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:8px;padding:10px;color:#fff;font-size:14px;outline:none;resize:none;height:40px}
-.chat-input:focus {border-color:#6366f1}
-.btn-send {background:#fff;color:#000;border:none;padding:0 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s}
-.btn-send:hover {background:#e5e5e5}
-.btn-send:disabled {background:#333;color:#666;cursor:not-allowed}
-@media(max-width:450px){.chat-container{width:calc(100% - 32px);right:16px;bottom:16px;height:400px}}
-</style>
-</head>
-<body>
-<div class="bg"></div>
-<nav>
-<div class="logo">Bene<span>X</span></div>
-<div class="badge">● API Live em api.benex.net.br</div>
-</nav>
-<div class="hero">
-<h1>Inteligência Artificial que <span>trabalha por você</span></h1>
-<p class="sub">Automatize atendimento, vendas e processos. Backend em Python + FastAPI já no ar em api.benex.net.br. Pronto pra escalar de graça.</p>
-<div class="ctas">
-<a class="btn btn-primary" href="https://benex.net.br">Acessar App →</a>
-<a class="btn btn-sec" href="https://benex.net.br">Ver Documentação API</a>
-</div>
-</div>
-<div class="features">
-<div class="card"><h3>⚡ API em Python</h3><p>FastAPI rodando no Render com docs automático em /docs e /health monitorado.</p></div>
-<div class="card"><h3>🏢 Multi-cliente pronto</h3><p>Arquitetura pronta pra isolar dados por cliente quando ligar o banco Supabase.</p></div>
-<div class="card"><h3>💰 Infra grátis</h3><p>Começou com R$0 de servidor. Só pagou o domínio .net.br. Escala quando faturar.</p></div>
-</div>
-<div class="stack">
-<span>FastAPI</span><span>Python 3.11</span><span>Render</span><span>Vercel</span><span>Cloudflare</span><span>Supabase (próximo)</span>
-</div>
+    <!-- Otimização de Carregamento de Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-<!-- COMPONENTE DE CHAT FLUTUANTE DA IA -->
-<div class="chat-container">
-    <div class="chat-header">
-        <h4>BeneX AI Studio</h4>
-        <span style="font-size:11px; color:#666;">Llamafile Qwen</span>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-        <div class="msg msg-ia">Olá! Como posso ajudar na automação dos seus processos hoje?</div>
-    </div>
-    <div class="chat-input-area">
-        <input type="text" id="chatInput" class="chat-input" placeholder="Pergunte algo à IA..." onkeydown="if(event.key === 'Enter') enviarMensagemStream()">
-        <button id="btnEnviar" class="btn-send" onclick="enviarMensagemStream()">Enviar</button>
-    </div>
-</div>
-
-<footer>
-BeneX © 2026 — <a href="https://benex.net.br">api status</a> · <a href="https://benex.net.br">docs</a> · benex.net.br no ar
-</footer>
-
-<!-- PROGRAMAÇÃO DO STREAM COMPATÍVEL COM LLAMAFILE -->
-<script>
-// Mantém a porta 11434 que rodamos no CMD
-const LLAMAFILE_API_URL = 'http://localhost:8080/v1/chat/completions'; 
-
-async function enviarMensagemStream() {
-    const input = document.getElementById('chatInput');
-    const container = document.getElementById('chatMessages');
-    const btn = document.getElementById('btnEnviar');
-    const texto = input.value.trim();
-
-    if (!texto) return;
-
-    input.value = '';
-    input.disabled = true;
-    btn.disabled = true;
-
-    const userDiv = document.createElement('div');
-    userDiv.className = 'msg msg-user';
-    userDiv.innerText = texto;
-    container.appendChild(userDiv);
-    container.scrollTop = container.scrollHeight;
-
-    const iaDiv = document.createElement('div');
-    iaDiv.className = 'msg msg-ia';
-    iaDiv.innerText = '...';
-    container.appendChild(iaDiv);
-    container.scrollTop = container.scrollHeight;
-
-    try {
-        const response = await fetch(LLAMAFILE_API_URL, {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer no-key-required'
-            },
-            body: JSON.stringify({
-                model: 'local-model',
-                messages: [{ role: 'user', content: texto }],
-                stream: true 
-            })
-        });
-
-        if (!response.ok) throw new Error("Não foi possível conectar ao Llamafile.");
-
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        iaDiv.innerText = ''; 
-
-        while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-
-            const chunkText = decoder.decode(value, { stream: true });
-            const linhas = chunkText.split('\n');
-            
-            for (const linha of linhas) {
-                if (linha.startsWith('data: ')) {
-                    const jsonStr = linha.replace('data: ', '').trim();
-                    if (jsonStr === '[DONE]') break;
-                    
-                    try {
-                        const json = JSON.parse(jsonStr);
-                        const conteudo = json.choices[0].delta.content;
-                        if (conteudo) {
-                            iaDiv.innerText += conteudo;
-                            container.scrollTop = container.scrollHeight;
-                        }
-                    } catch (e) {}
-                }
-            }
+    <style>
+        :root {
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --bg-color: #0a0a0a;
+            --card-bg: #111111;
+            --border-color: #222222;
+            --primary-color: #6366f1;
+            --primary-gradient: linear-gradient(90deg, #818cf8, #c084fc);
         }
 
-    } catch (erro) {
-        console.error(erro);
-        iaDiv.innerText = "Erro ao conectar com a IA. Certifique-se de que o Llamafile está ativo no terminal.";
-    } finally {
-        input.disabled = false;
-        btn.disabled = false;
-        input.focus();
-    }
-}
-</script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
+        }
+
+        code, pre, kbd, samp {
+            font-family: var(--font-mono);
+        }
+
+        body {
+            background: var(--bg-color);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bg {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(600px at 20% 10%, rgba(99, 102, 241, 0.15), transparent),
+                radial-gradient(800px at 80% 90%, rgba(168, 85, 247, 0.12), transparent);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        nav {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 5%;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .badge {
+            font-size: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            padding: 6px 12px;
+            border-radius: 999px;
+            color: #888;
+        }
+
+        .hero {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5% 40px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub {
+            color: #888;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 24px auto 36px;
+            line-height: 1.5;
+        }
+
+        .ctas {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #e5e5e5;
+            transform: translateY(-1px);
+        }
+
+        .btn-sec {
+            background: #1a1a1a;
+            color: #fff;
+            border: 1px solid #2a2a2a;
+        }
+
+        .btn-sec:hover {
+            background: #222;
+            transform: translateY(-1px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 60px auto;
+            padding: 0 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #1e1e1e;
+            border-radius: 16px;
+            padding: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #2a2a2a;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .stack {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stack span {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        footer {
+            margin-top: auto;
+            position: relative;
+            text-align: center;
+            padding: 40px 5%;
+            color: #444;
+            font-size: 13px;
+            border-top: 1px solid #111;
+            z-index: 1;
+        }
+
+        footer a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #aaa;
+        }
+
+        /* --- INTERFACE DO CHAT DE IA --- */
+        .chat-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 380px;
+            height: 500px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            z-index: 100;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-header {
+            background: #16161a;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h4 {
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-header h4::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .msg {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            word-wrap: break-word;
+        }
+
+        .msg-user {
+            background: var(--primary-color);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .msg-ia {
+            background: #1a1a1a;
+            border: 1px solid var(--border-color);
+            color: #eee;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            white-space: pre-wrap;
+        }
+
+        .chat-input-area {
+            padding: 12px;
+            background: #16161a;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn-send {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 0 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-send:hover {
+            background: #e5e5e5;
+        }
+
+        .btn-send:disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        @media(max-width: 600px) {
+            h1 { font-size: 36px; }
+        }
+
+        @media(max-width: 450px) {
+            .chat-container {
+                width: calc(100% - 32px);
+                right: 16px;
+                bottom: 16px;
+                height: 420px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+
+    <nav>
+        <div class="logo">Bene<span>X</span></div>
+        <div class="badge">● API Live em api.benex.net.br</div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Inteligência Artificial que <span>trabalha por você</span></h1>
+            <p class="sub">Automatize atendimento, vendas e processos. Backend em Python + FastAPI já no ar em api.benex.net.br. Pronto pra escalar de graça.</p>
+            <div class="ctas">
+                <a class="btn btn-primary" href="https://benex.net.br">Acessar App →</a>
+                <a class="btn btn-sec" href="https://benex.net.br">Ver Documentação API</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <article class="card">
+                <h3>⚡ API em Python</h3>
+                <p>FastAPI rodando no Render com docs automático em /docs e /health monitorado.</p>
+            </article>
+            <article class="card">
+                <h3>🏢 Multi-cliente pronto</h3>
+                <p>Arquitetura pronta pra isolar dados por cliente quando ligar o banco Supabase.</p>
+            </article>
+            <article class="card">
+                <h3>💰 Infra grátis</h3>
+                <p>Começou com R$0 de servidor. Só pagou o domínio .net.br. Escala quando faturar.</p>
+            </article>
+        </section>
+
+        <div class="stack">
+            <span>FastAPI</span>
+            <span>Python 3.11</span>
+            <span>Render</span>
+            <span>Vercel</span>
+            <span>Cloudflare</span>
+            <span>Supabase (próximo)</span>
+        </div>
+    </main>
+
+    <!-- COMPONENTE DE CHAT FLUTUANTE DA IA -->
+    <aside class="chat-container">
+        <header class="chat-header">
+            <h4>BeneX AI Studio</h4>
+            <span style="font-size:11px; color:#666;">Llamafile Qwen</span>
+        </header>
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg msg-ia">Olá! Como posso ajudar na automação dos seus processos hoje?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Pergunte algo à IA..." onkeydown="if(event.key === 'Enter') enviarMensagemStream()">
+            <button id="btnEnviar" class="btn-send" onclick="enviarMensagemStream()">Enviar</button>
+        </div>
+    </aside>
+
+    <footer>
+        BeneX © 2026 — <a href="https://benex.net.br">api status</a> · <a href="https://benex.net.br">docs</a> · benex.net.br no ar
+    </footer>
+
+    <!-- PROGRAMAÇÃO DO STREAM COMPATÍVEL COM LLAMAFILE -->
+    <script>
+        // Porta 8080 (padrão do Llamafile para requisições compatíveis com OpenAI)
+        const LLAMAFILE_API_URL = 'http://localhost:8080/v1/chat/completions'; 
+
+        // Histórico mantido para garantir o contexto das respostas
+        const historicoMensagens = [];
+
+        async function enviarMensagemStream() {
+            const input = document.getElementById('chatInput');
+            const container = document.getElementById('chatMessages');
+            const btn = document.getElementById('btnEnviar');
+            const texto = input.value.trim();
+
+            if (!texto) return;
+
+            // Bloqueia interface durante requisição
+            input.value = '';
+            input.disabled = true;
+            btn.disabled = true;
+
+            // Renderiza mensagem do usuário
+            const userDiv = document.createElement('div');
+            userDiv.className = 'msg msg-user';
+            userDiv.innerText = texto;
+            container.appendChild(userDiv);
+
+            // Salva no histórico local
+            historicoMensagens.push({ role: 'user', content: texto });
+
+            // Elemento da resposta da IA
+            const iaDiv = document.createElement('div');
+            iaDiv.className = 'msg msg-ia';
+            iaDiv.innerText = '...';
+            container.appendChild(iaDiv);
+            container.scrollTop = container.scrollHeight;
+
+            let respostaCompleta = '';
+
+            try {
+                const response = await fetch(LLAMAFILE_API_URL, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer no-key-required'
+                    },
+                    body: JSON.stringify({
+                        model: 'local-model',
+                        messages: historicoMensagens,
+                        stream: true 
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro na conexão HTTP: ${response.status}`);
+                }
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                iaDiv.innerText = ''; 
+
+                let buffer = ''; // Buffer para acumular fragmentos do stream SSE
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, { stream: true });
+                    const linhas = buffer.split('\n');
+                    
+                    // Mantém a última linha incompleta no buffer para o próximo chunk
+                    buffer = linhas.pop() || '';
+
+                    for (const linha of linhas) {
+                        const linhaLimpa = linha.trim();
+                        if (linhaLimpa.startsWith('data: ')) {
+                            const jsonStr = linhaLimpa.replace('data: ', '').trim();
+                            if (jsonStr === '[DONE]') break;
+                            
+                            try {
+                                const json = JSON.parse(jsonStr);
+                                const conteudo = json.choices[0]?.delta?.content;
+                                if (conteudo) {
+                                    respostaCompleta += conteudo;
+                                    iaDiv.innerText = respostaCompleta;
+                                    container.scrollTop = container.scrollHeight;
+                                }
+                            } catch (e) {
+                                // Ignora eventuais fragmentos malformados isolados
+                            }
+                        }
+                    }
+                }
+
+                // Armazena a resposta final no histórico de conversação
+                if (respostaCompleta) {
+                    historicoMensagens.push({ role: 'assistant', content: respostaCompleta });
+                } else {
+                    iaDiv.innerText = "Resposta vazia recebida do servidor local.";
+                }
+
+            } catch (erro) {
+                console.error("Erro no Chat Stream:", erro);
+                iaDiv.innerText = "⚠️ Não foi possível conectar ao Llamafile. Certifique-se de que ele está ativo na porta 8080.";
+            } finally {
+                input.disabled = false;
+                btn.disabled = false;
+                input.focus();
+            }
+        }
+    </script>
 </body>
 </html>
