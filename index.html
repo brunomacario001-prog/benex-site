@@ -11,6 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+        html { scroll-behavior: smooth; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+
         :root {
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -231,6 +237,27 @@
             color: #aaa;
         }
 
+        footer .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 18px;
+            margin-bottom: 18px;
+            color: #fff;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        footer .back-to-top:hover,
+        footer .back-to-top:focus-visible {
+            color: #fff;
+            background: #222;
+            outline: 2px solid #818cf8;
+            outline-offset: 2px;
+        }
+
         /* --- INTERFACE DO CHAT DE IA --- */
         .chat-container {
             position: fixed;
@@ -373,7 +400,7 @@
 <body>
     <div class="bg"></div>
 
-    <nav>
+    <nav id="inicio">
         <div class="logo">Bene<span>X</span></div>
         <div class="badge">● API Live em api.benex.net.br</div>
     </nav>
@@ -429,6 +456,7 @@
     </aside>
 
     <footer>
+        <a class="back-to-top" href="#inicio">↑ Voltar ao topo</a><br>
         BeneX © 2026 — <a href="https://benex.net.br">api status</a> · <a href="https://benex.net.br">docs</a> · benex.net.br no ar
     </footer>
 
